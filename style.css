@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+.latar img {
+    max-height: 561px;
+    width: auto;
+    max-width: 100%;
+}
+/* 
+.crop-img {
+    object-fit: cover;
+} */
+
+
+.product-list>.nextArrowBtn ,
+.product-list>.prevArrowBtn {
+    position: absolute;
+    z-index: 1000;
+    border: 2px solid #000;
+    color: #000;
+    bottom: -20%;
+    width: 2.75rem;
+    height: 2.75rem;
+    background-color: #fff;
+    font-size: 1rem;
+    line-height: 2.625rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.product-list>.prevArrowBtn {
+    top: 50%;
+    left: 0%;
+    border-radius: 50%;
+}
+.product-list>.nextArrowBtn {
+    top: 50%;
+    left: auto;
+    right: -2%;
+    border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+
+    .product-list>.prevArrowBtn {
+        top: 50%;
+        left: 0%;
+        border-radius: 50%;
+    }
+
+    .product-list>.nextArrowBtn {
+        top: 50%;
+        left: auto;
+        right: 0%;
+        border-radius: 50%;
+    }    
+
+    .pou {
+        margin: 3rem;
+    }
+
+    .slick-dots {
+        left: -3px;
+    }
+
+    .poop {
+        margin-right: -25%;
+    }
+}
+
+.product-list .slick-dots li.slick-active button {
+    background: linear-gradient(162.41deg, #43BAFF 1.77%, #7141B1 92.78%);
+}
+
+.product-list .slick-dots li button:focus,
+.product-list .slick-dots li button:hover {
+    outline: none;
+    background: linear-gradient(162.41deg, #43BAFF 1.77%, #7141B1 92.78%);
+}
+
+.product-list>.slick-list {
+    padding: 0 0 0 0 !important;
+}
+.product-list .slick-dots li button{
+    width: 100%;
+    height: 5px;
+    background-color: #c1c3c5;
+    display: unset;
+    padding: 0;
+}
+.product-list .slick-dots li {
+    margin: 10px;
+}
+.product-list .slick-dots li button::before{
+    content: "";
+}
+.product-list .slick-dots {
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    bottom: -7%;
+}
+
+.product-list .card::after,
+.product-list .card::before {
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    content: "";
+    height: 100%;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    transition: 500ms all ease;
+}
+
+.product-list .card::before {
+    background: linear-gradient(162.41deg, #43BAFF 1.77%, #7141B1 92.78%);
+}
+
+
+.product-list .card:hover::before {
+    left: 0;
+}
+
+.col.my-auto {
+    text-align: center;
+}
+
+.prof img {   
+    width: 35px;
+    border: 2px solid #cccccc;
+}
+
+.atur-logo {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #333;
+}
+
+.atur {
+    color: white;
+    margin-right: auto;
+}
+
+@media (min-width: 992px) {
+    .navbar-nav {
+        margin-left: 388.5px;
+    }
+    .haya {
+        margin-left: 310px;
+    }
+    .pou {
+        margin: 1rem;
+    }
+    .slick-dots{
+        left: 11.5px;
+    }
+    .prof {
+        margin-right: 10px;
+    }
+    .poop {
+        margin-left: 5px;
+    }
+}
+
+/* Shopping Cart */
+
+#shopping-cart-button{
+    position: relative;
+}
+
+#shopping-cart-button .quantity-badge{
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: red;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    position: absolute;
+    bottom: 6px;
+    right: -3px;
+}
+
+.shopping-cart {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    height: 100vh;
+    width: 25rem;
+    padding: 0 1.5rem;
+    background-color: rgb(226, 217, 217);
+    color: var(--bg);
+    transition: 0.3s;
+    max-height: 517px; /* atau tinggi yang sesuai */
+    overflow-y: auto;
+  }
+  
+  .shopping-cart.active {
+    right: 0;
+  }
+  
+  .shopping-cart .cart-item {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #6d6b6b;
+    position: relative;
+  }
+  
+  .shopping-cart img {
+    height: 5rem;
+    border-radius: 50%;
+  }
+  
+  .shopping-cart h3 {
+    font-size: 1.2rem;
+  }
+
+  .shopping-cart h4, .shopping-cart h5{
+    font-size: 1.6rem;
+    margin-top: -1rem;
+    text-align: center;
+  }
+  
+  .shopping-cart .item-price {
+    font-size: 1rem;
+  }
+  
+  .shopping-cart .cart-item #add,
+  .shopping-cart .cart-item #remove{
+    display: inline-block;
+    padding: 1px 4px;
+    cursor: pointer;
+    margin: 0 5px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  .btn-grad {
+    background: linear-gradient(45deg, red, green);
+    background-size: 200% 200%;
+    transition: background-position 0.5s;
+    color: white;
+}
+.btn-grad:hover {
+    background-position: right center;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        margin-left: 0;
+    }
+    .nav-item {
+        text-align: center;
+        width: 100%;
+    }
+    .navbar-collapse {
+        text-align: center;
+    }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="src/app.js"></script>
+    <link rel="shortcut icon" href="img-logo/logo-tokokita.png" type="image/x-icon"> 
+    <title>Product</title>
+</head>
+
+<body style="overflow-x: hidden;">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body shadow-lg fixed-top" x-data>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="home.html" style="font-family: serif; margin-left: 10px;">
+            <img src="img-logo/logo-tokokita.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            BuNovel
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"> <!--<i class="fas fa-bars" style="line-height: 30px;"></i> --> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="product.html">Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 haya">
+                <li class="nav-item">
+                    <button type="button" class="position-relative" style="border: none; background: none;">
+                        <a href="#" class="nav-link" id="shopping-cart-button">
+                            <i data-feather="shopping-cart"></i>
+                                <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+                        </a>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Shopping Cart start -->
+                <div class="shopping-cart">
+                    <template x-for="(item, index) in $store.cart.items" x-keys="">
+                        <div class="cart-item">
+                        <img :src="item.img" :alt="item.name">
+                        <div class="item-detail">
+                            <h3 x-text="item.name"></h3>
+                            <div class="item-price">
+                                <span x-text="rupiah(item.price)"></span> &times;
+                                <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                                <span x-text="item.quantity"></span>
+                                <button id="add" @click="$store.cart.add(item)">&plus;</button>&equals;
+                                <span x-text="rupiah(item.total)"></span>
+                            </div>
+                        </div>
+                        </div>
+                    </template>
+                    <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart is Empty</h4>
+                    <h5 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h5>
+                    <h5 style="margin-top: 10px;"><button x-show="$store.cart.items.length" class="btn btn-primary" style="padding: 6px 14px; background-color: royalblue; color: white; font-weight: bold; font-size: 1rem; border-radius: 20px; margin: 1rem auto; cursor: pointer;" @click="window.location.href = `checkout.html?total=${$store.cart.total}`">Checkout</button></h5>
+                </div>
+            <!-- Shopping Cart end -->
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 prof" style="margin-right: 10px;">
+              <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-family: 'Times New Roman'">
+                      <img src="https://i1.sndcdn.com/artworks-5MuyfNhSnbkWAyOA-lWwDVg-t500x500.jpg" class="rounded-circle">
+                      Hi Wahyu's
+                  </a>
+                  <ul class="dropdown-menu" style="width: auto;">
+                      <!-- <li><a class="dropdown-item disabled" href="#" style="color: black;">Login</a></li>
+                      <li><hr class="dropdown-divider"></li> -->
+                      <li><a class="dropdown-item" href="loginpage-fix/login-page.html">Logout</a></li>
+                  </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <!-- cardnya -->
+<section class="products" id="products" x-data="products">
+    <div class="container-fluid" style="margin-top: 116px; margin-bottom: 50px;">
+        <div class="container-fluid poop">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-5 justify-content-center">
+                <template x-for="(item, index) in items" x-key="index">
+                    <div class="col">
+                        <div class="card h-100" style="max-width: 202px; max-height: 400px;">
+                            <a href="#">
+                                <img :src="item.img" class="card-img-top" :alt="item.name" style="width: 200px; height: auto; max-height: 200px; object-fit: contain; cursor: pointer;">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title" x-text="item.name"></h6>
+                                <span class="badge bg-warning text-dark"><span x-text="item.bintang"></span> ★</span>
+                                <p class="card-text mt-2">
+                                    <span class="text-decoration-line-through text-muted" x-text="rupiah(item.price2)"></span><br> 
+                                    <span class="font-weight-bold text-danger" x-text="rupiah(item.price)"></span>
+                                </p>
+                                <a href="#" @click.prevent="$store.cart.add(item)" class="btn btn-primary"><i class="fas fa-cart-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- wmnya -->
+    <div class="container-fluid pb-3 pt-3 bg-light">
+        <div class="container">
+          <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 ">
+            <div class="col-md-4 d-flex align-items-center">
+              <span class="mb-3 mb-md-0 text-muted">BuNovel &copy; 2024, All Rights Reserved</span>
+            </div>
+        
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+              <li class="ms-3"><a class="text-muted atur-logo" href="#" style="line-height: 55px;"><i class="fab fa-instagram atur" style="font-size: 25px; margin-left: 14px;"></i></a></li>
+              <li class="ms-3"><a class="text-muted atur-logo" href="#" style="line-height: 52px;"><i class="fab fa-tiktok atur" style="font-size: 22px; margin-left: 15px;"></i></a></li>
+              <li class="ms-3"><a class="text-muted atur-logo" href="#" style="line-height: 56.8px;"><i class="fab fa-facebook atur" style="font-size: 27px; margin-left: 12px;"></i></a></li>
+            </ul>
+          </footer>
+        </div>
+       </div>
+
+    <!-- bagian atas -->
+    <script>
+        feather.replace()
+    </script>
+    
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
